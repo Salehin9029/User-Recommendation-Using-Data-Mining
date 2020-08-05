@@ -20,7 +20,7 @@ def getUsers():
                 users.append(match) #The append() method in python adds a single item to the existing list.
                 databaseCon.Database.insert(con, "INSERT INTO users(userName) VALUE ("+match+");")
     return users
-print(getUsers())
+
 
 def getRecipe():
     recipes = []
@@ -32,6 +32,21 @@ def getRecipe():
                 databaseCon.Database.insert(con, "INSERT INTO recipe(recipeName) VALUE ('" + match + "');")
     return recipes;
 
+def getRatings():
+    ratings = []
 
-print(getRecipe())
+    for i in range(1, 10):
+        foundratings = []
+        j = 0
+        sourcecode = getsourcecode(i)
 
+        for match in re.findall('<p id="rating">([0-9]+)', sourcecode):
+            foundratings.append(match)
+
+        for match in re.findall('<p id="userId">([0-9]+)', sourcecode):
+            ratings.append([foundratings[j], match, i])
+            j += 1
+    return ratings
+#print(getRecipe())
+#print(getUsers())
+print(getRatings())
