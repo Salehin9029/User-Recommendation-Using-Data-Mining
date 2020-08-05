@@ -32,7 +32,6 @@ def getRecipe():
                 databaseCon.Database.insert(con, "INSERT INTO recipe(recipeName) VALUE ('" + match + "');")
     return recipes;
 
-def getRatings():
 
 print(getRecipe())
 
