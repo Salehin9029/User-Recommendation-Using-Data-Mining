@@ -45,8 +45,9 @@ def getRatings():
 
         for match in re.findall('<p id="userId">([0-9]+)', sourcecode):
             ratings.append([foundratings[j], match, i])
+            databaseCon.Database.insert(con, "INSERT INTO rating (rating, Users_idUsers, Recipe_idRecipe) VALUES ("+str(foundratings[j])+", (SELECT idUsers from users where userName = "+match+"), "+str(i)+");")
             j += 1
     return ratings
-#print(getRecipe())
-#print(getUsers())
+print(getRecipe())
+print(getUsers())
 print(getRatings())
