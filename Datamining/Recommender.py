@@ -27,7 +27,7 @@ def do_predict():
     algo.fit(trainset)
     testset = trainset.build_anti_testset()
     predictions = algo.test(testset)
-    cross_validate(algo, data, measures=['RMSE', 'MAE'], cv=5, verbose=True)
+    cross_validate(algo, data, measures=['RMSE', 'MAE'], cv=5, verbose=True) # Root Mean Square Error # Mean absolute error
     get_top_n(predictions)
 
 
