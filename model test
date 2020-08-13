@@ -1,0 +1,24 @@
+
+import time
+from Engine.SqlEngine import MSSQL
+COUNT=1
+def restoreRelease():
+    global COUNT
+    checkConSql = "select spid from sysprocesses where dbid in (select dbid from sysdatabases where name='SOATest')"
+    restoreSql = "RESTORE DATABASE SOATest FROM DATABASE_SNAPSHOT = 'SOATest_ss'"
+    dbc=MSSQL('192.168.1.2','yht','yht','Master')
+    conNum = dbc.ExecQuery(checkConSql)
+    if COUNT < 5:
+        if len(conNum) == 0:
+            print(u'%d restarting...'%len(conNum))
+            dbc.ExecNonQuery(restoreSql)
+            print(u'database restart finish')
+            return True
+        else:
+            print(u'%d restart'%len(conNum))
+            time.sleep(5)
+            COUNT=COUNT+1
+            restoreRelease()
+    else:
+        print(u'%dfail'%len(conNum))
+        return False
