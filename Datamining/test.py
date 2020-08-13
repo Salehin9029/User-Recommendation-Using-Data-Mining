@@ -14,6 +14,9 @@ userGroupId = loadedData[0]
 ingredientId = loadedData[1]
 ratings = loadedData[2]  # ALL MUST BE IN SAME LENGTH OR ERROR WILL COME
 
+userGroupId = loadedData[0]
+ingredientId = loadedData[1]
+ratings = loadedData[2]  # ALL MUST BE IN SAME LENGTH OR ERROR WILL COME
 
 def do_predict():
     ratings_dic = {"userId": userGroupId,
