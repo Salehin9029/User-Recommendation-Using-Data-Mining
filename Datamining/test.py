@@ -14,7 +14,7 @@ userGroupId = loadedData[0]
 ingredientId = loadedData[1]
 ratings = loadedData[2]  # ALL MUST BE IN SAME LENGTH OR ERROR WILL COME
 
-uGroupId = loadedData[0]
+userGroupId = loadedData[0]
 ingredientId = loadedData[1]
 ratings = loadedData[2]  # ALL MUST BE IN SAME LENGTH OR ERROR WILL COME
 
